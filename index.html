@@ -4,63 +4,33 @@
 <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
   <title>Facebook like-trap | jack-shepherd.co.uk</title>
-  <script type='text/javascript' src='http://code.jquery.com/jquery-1.4.2.js'></script>
-  
 
 <style type="text/css">
-#fake /* fake cursor */
-{
-  float:left;
-  position:absolute;
-  z-index:99;
-}
-
 *
 {
-  cursor:none;
   font-family:Arial, Helvetica, sans-serif;
 }
 
-#iFrameSurround
-{
-  float:left;
+#iFrameSurround {
   position:relative;
 }
 
-#iFrameCover
-{
-  display:block;
-  height:80px;
-  left:0;
+.iframe, #clickMe {
+  left:400px;
   position:absolute;
-  top:0;
-  width:400px;
-  z-index:5;
+  top: 10px;
 }
 
-.iframeDiv
-{
-  height:80px;
-  left:0;
-  position:absolute;
-  top:0;
-  width:400px;
-  z-index:1;
-}
-
-.iframe
-{
+.iframe {
   border:none;
-  height:40px;
-  position:absolute;
-  width:50px;
+  height:16px;
+  margin: 2px;
+  width:40px;
   z-index:0;
 }
 
-#clickMe
-{
-  left:400px;
-  position:absolute;
+#clickMe {
+  pointer-events: none;
 }
 
 
@@ -89,110 +59,33 @@
 
 #arrow
 {
-  margin-left:-10px;
+  margin-left: -25px;
+  margin-top: 30px;
 }
 
 
 
 </style>
-
-  
 </head>
 <body>
-
-
 <div class="container">
 
-
-  <div id="fake"><img id="cursor" src="xp.png" /></div><br />
-
-
-
-
-<div id="iFrameSurround">
-  <div id="iFrameCover"></div>
-  <div id="iframeDiv">
+  <div id="iFrameSurround">
     <iframe src="http://www.facebook.com/plugins/like.php?href=http://www.jack-shepherd.co.uk" scrolling="no" frameborder="0" class="iframe"></iframe>
-  </div>
-  <div>
     <input type="submit" value="clicky" id="clickMe" />
   </div>
-</div>
 
 
 
-<div id="description">
-<img src="arrow.png" id="arrow" />
+  <div id="description">
+  <img src="arrow.png" id="arrow" />
 
-<h3>Demo: Fake Mouse-pointer Facebook like trap thing</h3>
-<p>Uses a fake cursor to get the user to click on a Facebook 'like' button. Could probably be used more deviously - perhaps cursor:none isn't a great idea.</p>
-<p>Might take a couple of clicks to work. Also on OSX Chrome requires the cursor to leave the window and re-enter.</p>
+  <h3>Demo: Pointer-events Facebook like trap thing</h3>
+  <p>I modded this to use pointer-events, a much easier solution IMO.</p>
+  <p>If you styled your own button this could be a bit easier too.</p>
 
-<p><strong>To do...</strong></p>
-<ul>
-  <li class="strikethrough">Change mouse cursor depending on operating system</li> 
-  <li>Constantly poll Facebook to see whether page has been liked by user, if so, display fake unliked button above iFrame</li>
-  <li>Better cross browser (only Chrome at the moment)</li> 
-  <li>Make it easier for people to click the below links...</li>
-</ul>
-<p><a href="http://www.jack-shepherd.co.uk">...back to Jack-Shepherd.co.uk</a> or <a href="https://github.com/jackshepherd">Fork me on Github</a></p>
-</div>
-
-
-  
-  
-<script type='text/javascript'>
-
-$(document).ready(function() { 
-
-  $(document).bind('mousemove', function(e){
-  $('#fake').css({
-     left:  e.pageX + 400,
-     top:   e.pageY
-  });
-  });
-
-
-  $('#iFrameCover').mouseover(function() { 
-
-    hideIt();
-
-  });  
-
-  var cursorImage="vista.png";
-  if (navigator.appVersion.indexOf("Win")!=-1) cursorImage="vista.png";
-  if (navigator.appVersion.indexOf("Mac")!=-1) cursorImage="osx.png";
-
-
-  $('#cursor').attr('src', cursorImage)
-
-
-
-});
-
-
-
-function hideIt()
-{
-  $('#iFrameCover').hide();
-  setTimeout("showIt()",40)  
-}
-
-
-function showIt()
-{
-  $('#iFrameCover').show();
-  setTimeout("hideIt()",1)  
-}
-
-
-
-
-</script>
-
-
-
-
+  <p><a href="http://www.jack-shepherd.co.uk">...back to Jack-Shepherd.co.uk</a> or <a href="https://github.com/jackshepherd">Fork me on Github</a></p>
+  </div>
 </div>
 
 
